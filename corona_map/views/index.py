@@ -6,4 +6,5 @@ mod = Blueprint('/', __name__)
 def index():
     title = current_app.config['TITLE']
     regions = current_app.config['REGIONS']
-    return render_template('dashboard.html', TITLE=title, REGIONS=regions)
+    info = current_app.config['INFO']
+    return render_template('dashboard.html', TITLE=title, REGIONS=regions, INFO=info)
