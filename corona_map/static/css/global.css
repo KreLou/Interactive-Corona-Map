@@ -20,7 +20,7 @@ body{
 
 li.region-list-element {
     width: 100%;
-    max-width: 450px;
+    max-width: 550px;
     margin-bottom: 5px;
     margin-left: auto;
     margin-right: auto;
@@ -37,7 +37,6 @@ li.region-list-element {
     border-radius: 5px;
     background-color: #f8f8f8;
     text-transform: uppercase;
-    font-size: 20px;
     font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     color: #094e88;
