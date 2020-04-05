@@ -1,0 +1,20 @@
+
+{% extends "index.html" %}
+{% block title %}{{TITLE}}{% endblock %}
+{% block header_title %} {{TITLE}} {% endblock %}
+{% block content %}
+
+<div class="logo">
+    <img src="/static/img/logo.png">
+</div>
+
+<ul style="list-style: none; padding: 2em">
+    {% for REGION in REGIONS %}
+    <li class="region-list-element">
+        <a href="/view/{{REGION.URL}}"><button class="region-button">{{REGION.TITLE}}</button></a>
+    </li>
+
+    {%endfor%}
+
+</ul>
+{% endblock %}

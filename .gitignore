@@ -1,3 +1,6 @@
+corona_map/database/*.csv
+corona_map/config.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

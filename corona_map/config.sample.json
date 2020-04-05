@@ -1,0 +1,19 @@
+{
+  "TITLE": "Interaktive Corona Karte",
+  "REGIONS": [
+    {
+      "TITLE": "Erzgebirge",
+      "OSM_DISTRICT": "Erzgebirgskreis",
+      "URL": "erzgebirge",
+      "TYPE": "csv",
+      "FILE": "erzgebirge.csv"
+    },
+    {
+      "TITLE": "Zwickau",
+      "OSM_DISTRICT": "Zwickau",
+      "URL": "zwickau",
+      "TYPE": "csv",
+      "FILE": "zwickau.csv"
+    }
+  ]
+}
