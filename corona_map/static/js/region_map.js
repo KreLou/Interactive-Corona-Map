@@ -5,7 +5,7 @@ var activeMarker = [];
 var index = 0;
 var activeMarker = [];
 var max_Cases = 0;
-var max_Radius = 4800;
+var max_Radius = 6600;
 var oldDayEntrys = []
 
 var mymap;
