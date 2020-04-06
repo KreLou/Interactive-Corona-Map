@@ -3,12 +3,17 @@ var playButton = null;
 var timestampElement = null;
 var activeMarker = [];
 var index = 0;
-var activeMarker = [];
 var max_Cases = 0;
-var max_Radius = 6600;
+var max_Radius = 66000;
 var oldDayEntrys = []
 
 var mymap;
+
+function markerRadius(amount) {
+    return (amount / max_Cases * (max_Radius*10)) / Math.pow(mymap.getZoom(),2);
+}
+
+
 
 window.onload = function () {
 
@@ -17,6 +22,12 @@ window.onload = function () {
 
 
     mymap = L.map('mapid')//.setView([50.623596,12.924983099999999], 10);
+
+    mymap.on('zoomend', function() {
+        activeMarker.forEach(marker => {
+            marker.setRadius(markerRadius(marker._amount));
+        })
+    });
 
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia3JlbG91IiwiYSI6ImNrOGxscXRldTA1ZmQzZW9jdmp0dnFncGwifQ.fVy2oaejPmtfmhEWhqbPwg', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -145,10 +156,12 @@ function showDateStamp(date) {
 }
 
 function getMarker(element) {
-    return L.circle([element['lat'], element['lon']], {
+    var marker =  L.circle([element['lat'], element['lon']], {
                 color: 'red',
                 fillColor: '#f03',
                 fillOpacity: 0.3,
-                radius: element['Anzahl'] / max_Cases * max_Radius
+                radius: markerRadius(element['Anzahl'])
             }).addTo(mymap);
+    marker._amount = element['Anzahl'];
+    return marker;
 }
