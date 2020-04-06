@@ -6,11 +6,11 @@ path = os.path.join(os.getcwd(), '..', 'corona_map', 'database')
 def storeNewItems(filename, newItems):
     filename = os.path.realpath(os.path.join(path, filename))
     print('Save ', len(newItems), ' in ', filename)
-    with open(filename, 'a+') as file:
+    with open(filename, 'r+', encoding='utf-8') as file:
         found = False
         for line in file:
             if line.startswith(newItems[0].Date):
-                found = True;
+                found = True
         if not found:
             for item in newItems:
                 string = '{};{};{}\n'.format(item.Date, item.Municipality.strip(), item.Amount)
