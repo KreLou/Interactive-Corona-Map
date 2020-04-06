@@ -1,3 +1,7 @@
+import sys, os
+path = os.path.abspath(os.path.join(os.getcwd(), '..'))
+sys.path.append(path)
+
 from data_crawler import crawler, importer, logger
 from corona_map.data import region_total, region_loader
 from corona_map.models.import_item import  ImportItem
