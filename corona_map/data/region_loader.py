@@ -17,7 +17,7 @@ def _getValues(region):
 def _getCSVValues(file):
     file_path  = os.path.join(os.path.abspath(current_app.root_path), 'database',  file)
     data = pandas.read_csv(file_path, delimiter=';', header=0, encoding='utf-8')
-    data['date'] = pandas.to_datetime(data['Zeitpunkt'])
+    data['date'] = pandas.to_datetime(data['Zeitpunkt'], dayfirst=True)
 
     return data
 

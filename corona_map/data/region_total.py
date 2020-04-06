@@ -32,7 +32,6 @@ def getRegion(region_URL):
     lons = dataFrame['lon'].unique()
 
     center_lat, center_lon = geolocation_calculator.getCenter(lats, lons)
-
     data_json = json.loads(dataFrame.to_json(orient='records'))
 
     r = make_response(json.dumps({'data': data_json, 'map': {'lat': center_lat, 'lon': center_lon}}))
