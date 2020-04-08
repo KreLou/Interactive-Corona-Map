@@ -18,7 +18,6 @@ def _getCSVValues(file):
     file_path  = os.path.join(os.path.abspath(current_app.root_path), 'database',  file)
     data = pandas.read_csv(file_path, delimiter=';', header=0, encoding='utf-8')
     data['date'] = pandas.to_datetime(data['Zeitpunkt'], dayfirst=True)
-
     return data
 
 
@@ -32,15 +31,15 @@ def getDataFrameFromRegion(region):
     data.rename(columns={'index': 'Region'}, inplace=True)
 
     #Fill Gaps in Location
-    missingGeo = data[data['lat'].isnull()]
+    missingGeo = data[data['lat'].isnull() | data['Polygon'].isnull()]
     missingMunicipalities = missingGeo['Region'].drop_duplicates(keep='first')
 
     if (len(missingMunicipalities) > 0):
         for index, municipality in missingMunicipalities.items():
-            lat, lon = geolocation_mapper.searchForGeolocation(municipality, region['OSM_DISTRICT'])
+            lat, lon, polygon = geolocation_mapper.searchForGeolocation(municipality, region['OSM_DISTRICT'])
             print('Found for ' + municipality + ', ' + (lat if lat != None else 'None') + ', ' + (lon if lon != None else 'None'))
-            if lat is not None and lon is not None:
-                geolocation_mapper.saveGeoLoactionForRegion(municipality=municipality, district=region['TITLE'], lat=lat, lon=lon)
+            if lat is not None and lon is not None and polygon is not None:
+                geolocation_mapper.saveGeoLoactionForRegion(municipality=municipality, district=region['TITLE'], lat=lat, lon=lon, polygon=polygon)
             else:
                 print('Found no Coordination for ' + municipality)
 

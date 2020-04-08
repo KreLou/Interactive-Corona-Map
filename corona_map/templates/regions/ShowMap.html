@@ -17,10 +17,17 @@
 
 {% block content %}
 
-<button id="play-button" onclick="onPlayStart()"></button>
+    <button id="play-button" onclick="onPlayStart()"></button>
 
-<span id="timestamp"></span>
-<div id="mapid"></div>
+    <span id="timestamp"></span>
+    <span id="color-legend"><img src="/static/img/color-range.png">
+        <div class="row">
+            <span id="min_value">0</span>
+            <span id="max_value">>= 50</span>
+        </div>
+    </span>
+
+    <div id="mapid"></div>
 
 {% endblock %}
 

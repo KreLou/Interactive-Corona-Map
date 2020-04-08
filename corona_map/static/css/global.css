@@ -65,19 +65,6 @@ li.region-list-element {
     width:100%;
 }
 
-#timestamp {
-    visibility: hidden;
-    border: 2px solid #575757;
-    font-size: 20px;
-    z-index: 1000;
-    background-color: #d1cfcfed;
-    border-radius: 15px;
-    padding: 15px 20px;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 10%);
-}
-
 #play-button {
     outline: none;
     visibility: hidden;
@@ -87,11 +74,48 @@ li.region-list-element {
 
     width: 24px;
     height: 24px;
-
     border-style: solid;
     border-width: 12px 0px 12px 24px;
     border-color: transparent transparent transparent rgb(205,205,205);
     background-color: transparent;
+}
+#timestamp {
+    visibility: hidden;
+    font-size: 20px;
+    padding: 15px 20px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 10%);
+}
+
+
+#color-legend, #timestamp {
+
+    z-index: 1000;
+    border: 2px solid #575757;
+    background-color: #d1cfcfed;
+    border-radius: 15px;
+}
+
+#color-legend {
+    visibility: visible;
+    z-index: 1000;
+    padding: 5px 20px;
+    position: fixed;
+    right: 16px;
+    transform: translate(0, 10%);
+}
+#max_value {
+    position: absolute;
+    right: 20px;
+    widht: 50%;
+}
+#min_value {
+
+}
+#color-legend img {
+    height: 5px;
+    width: 100%;
 }
 #play-button:hover {
     cursor: pointer;
