@@ -34,6 +34,8 @@ for entry in entrys:
     amount = int(entry[1])
 
     old_status = getFromList(municipality, current)
+    if old_status is None:
+        old_status = ['', 0]
     if (old_status[1] != amount):
         differenz = amount- old_status[1]
         #print(municipality, ' alt: ', old_status[1], ', neu: ', amount, ', differenz: ', differenz)
