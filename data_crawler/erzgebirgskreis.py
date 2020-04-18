@@ -16,15 +16,16 @@ logger.storeHTML('erzgebirge', date, html)
 
 entrys = crawler.extractTable(html, r'<tr>(.*?)</tr>', r'<td.*?>([^<]+)</td.*?>')
 
-print(entrys)
 
 relevant_entrys = [row for row in entrys if row[2] != '-']
+print(relevant_entrys)
 newLines = []
 for entry in relevant_entrys:
     item = ImportItem()
     item.Municipality = entry[0]
     item.Date = date
-    item.Amount = int(entry[2].replace('+', ''))
-    newLines.append(item)
+    if str(entry[2]) != '&nbsp;':
+        item.Amount = int(entry[2].replace('+', ''))
+        newLines.append(item)
 
 importer.storeNewItems('erzgebirge.csv', newLines)

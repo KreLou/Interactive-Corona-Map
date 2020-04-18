@@ -17,7 +17,7 @@ def storeNewItems(filename, newItems):
 
                 file.write(string)
         else:
-            print('Day ', newItems[0].Date, ' allready saved')
+            print('Day ', newItems[0].Date, ' already saved')
 
 
 def getCurrentStatus(filename):
